@@ -25,8 +25,10 @@ func handle_ids(data: IDSet) -> void:
 		id = data.id
 		handle_local_id_assignment.emit(id)
 		
-		for remote_id in remote_ids:
+		for remote_id in data.remote_ids:
 			if remote_id == id: continue
+			if not remote_id in remote_ids:
+				remote_ids.append(remote_id)
 			handle_foreign_id_assignment.emit(remote_id)
 	else:
 		remote_ids.append(data.id)

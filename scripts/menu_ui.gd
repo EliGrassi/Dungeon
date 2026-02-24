@@ -10,6 +10,11 @@ func _ready() -> void:
 func _on_server_start_pressed() -> void:
 	NetworkHandler.start_server()
 	ClientNetworkHandler.start_client()
+	remove_menu_ui()
 
 func _on_client_start_pressed() -> void:
 	ClientNetworkHandler.start_client()
+	remove_menu_ui()
+
+func remove_menu_ui() -> void:
+	queue_free()
