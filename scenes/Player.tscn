@@ -8,9 +8,11 @@
 size = Vector2(125, 125)
 
 [node name="Player" type="Node2D" unique_id=1884427673]
+z_index = 1
 script = ExtResource("1_3li8b")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1776135957]
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_p0vlq")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=34393876]

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
+const ACCELERATION = 25
 @onready var player = $".."
 
 
@@ -17,11 +18,11 @@ func _physics_process(delta: float) -> void:
 	var directionX := Input.get_axis("ui_left", "ui_right")
 	var directionY := Input.get_axis("ui_up", "ui_down")
 	if directionX:
-		velocity.x = directionX * SPEED
+		velocity.x = move_toward(velocity.x, directionX*SPEED, ACCELERATION)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	if directionY:
-		velocity.y = directionY * SPEED
+		velocity.y = move_toward(velocity.y, directionY*SPEED, ACCELERATION)
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 	move_and_slide()

@@ -3,6 +3,6 @@
 [ext_resource type="Script" uid="uid://dkwbsnc5fiitu" path="res://scripts/spawner.gd" id="1_2vbf6"]
 [ext_resource type="PackedScene" uid="uid://7kforom4s3ty" path="res://scenes/Player.tscn" id="2_ik2nu"]
 
-[node name="Node2D" type="Node2D" unique_id=1212540781]
+[node name="Spawner" type="Node2D" unique_id=1212540781]
 script = ExtResource("1_2vbf6")
 player = ExtResource("2_ik2nu")

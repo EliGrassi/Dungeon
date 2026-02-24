@@ -6,7 +6,6 @@ extends Node2D
 func _ready() -> void:
 	
 	ClientGlobals.handle_local_id_assignment.connect(spawn_player)
-	
 	ClientGlobals.handle_foreign_id_assignment.connect(spawn_player)
 
 func spawn_player(id: int) -> void:
@@ -15,4 +14,5 @@ func spawn_player(id: int) -> void:
 		new_player.global_position += Vector2(999,999)
 	new_player.owner_id = id
 	new_player.name = str(id)
+	new_player.global_position = Vector2(500, 400)
 	call_deferred("add_child", new_player)
