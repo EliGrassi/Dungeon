@@ -8,7 +8,7 @@ func _ready() -> void:
 	client_button.button_down.connect(_on_client_start_pressed)
 
 func _on_server_start_pressed() -> void:
-	NetworkHandler.start_server()
+	ServerNetworkHandler.start_server()
 	ClientNetworkHandler.start_client()
 	remove_menu_ui()
 

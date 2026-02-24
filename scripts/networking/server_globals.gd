@@ -8,14 +8,14 @@ var client_ids: Array[int]
 
 
 func _ready() -> void:
-	NetworkHandler.on_client_connect.connect(on_client_connected)
-	NetworkHandler.on_client_disconnect.connect(on_client_disconnected)
-	NetworkHandler.on_server_get_packet.connect(handle_incoming_packet)
+	ServerNetworkHandler.on_client_connect.connect(on_client_connected)
+	ServerNetworkHandler.on_client_disconnect.connect(on_client_disconnected)
+	ServerNetworkHandler.on_server_get_packet.connect(handle_incoming_packet)
 	
 
 func on_client_connected(client_id: int) -> void:
 	client_ids.append(client_id)
-	IDSet.create(client_id, client_ids).broadcast(NetworkHandler.connection)
+	IDSet.create(client_id, client_ids).broadcast(ServerNetworkHandler.connection)
 	
 func on_client_disconnected(client_id: int) -> void:
 	client_ids.erase(client_id)

@@ -40,7 +40,7 @@ func handle_packets() -> void:
 		
 		match event_type:
 			ENetConnection.EVENT_ERROR:
-				push_warning("PACKAGE ERROR - unkown error")
+				push_warning("SERVER: PACKAGE ERROR - unkown error")
 				pass
 			ENetConnection.EVENT_CONNECT:
 				if is_server:
@@ -61,7 +61,7 @@ func client_connected(client: ENetPacketPeer) -> void:
 	var client_id: int = connected_client_ids.pop_back()
 	client.set_meta("id", client_id)
 	connected_clients[client_id] = client
-	print("client connected")
+	print("SERVER: client connected")
 	on_client_connect.emit(client_id)
 
 
@@ -71,7 +71,7 @@ func client_disconnected(client: ENetPacketPeer) -> void:
 	var client_id: int = client.get_meta("id")
 	connected_client_ids.push_back(client_id)
 	connected_clients.erase(client_id)
-	print("client", client_id, "disconnected")
+	print("SERVER: client", client_id, "disconnected")
 	on_client_disconnect.emit(client_id)
 
 
@@ -82,10 +82,10 @@ func start_server(ip_address: String = "127.0.0.1", port: int = 25555) -> void:
 	connection = ENetConnection.new()
 	var error: Error = connection.create_host_bound(ip_address, port, max_clients)
 	if error:
-		print("Failed to start server: ", error_string(error))
+		print("SERVER: Failed to start server: ", error_string(error))
 		connection = null
 		return
-	print("server started")
+	print("SERVER: server started")
 	is_server = true
 	
 	

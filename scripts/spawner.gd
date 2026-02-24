@@ -11,6 +11,8 @@ func _ready() -> void:
 
 func spawn_player(id: int) -> void:
 	var new_player: Node = player.instantiate()
+	if id != ClientGlobals.id:
+		new_player.global_position += Vector2(999,999)
 	new_player.owner_id = id
 	new_player.name = str(id)
 	call_deferred("add_child", new_player)

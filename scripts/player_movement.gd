@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 func server_handle_position(client_id: int, player_position: PlayerPosition) -> void:
 	if player.owner_id != client_id: return
 	global_position = player_position.position
-	PlayerPosition.create(player.owner_id, global_position).broadcast(NetworkHandler.connection)
+	PlayerPosition.create(player.owner_id, global_position).broadcast(ServerNetworkHandler.connection)
 	
 func client_handle_position(player_position: PlayerPosition) -> void:
 	if player.is_authority || player_position.id != player.owner_id: return
