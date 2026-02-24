@@ -10,18 +10,12 @@ signal on_client_disconnect(client_id: int)
 #fires when the server recieves a packet
 signal on_server_get_packet(client_id: int, data: PackedByteArray)
 
-#CLIENT SIGNALS
-signal on_connect_to_server()
-signal on_disconnect_to_server()
-signal on_client_get_packet(data: PackedByteArray)
 
 #SERVER VARS
 var connected_client_ids: Array = range(255, -1, -1)
 var connected_clients: Dictionary[int, ENetPacketPeer]
 var max_clients: int = 4
 
-#CLIENT VARS
-var connected_server: ENetPacketPeer
 
 
 #GENERAL VARS
@@ -51,22 +45,12 @@ func handle_packets() -> void:
 			ENetConnection.EVENT_CONNECT:
 				if is_server:
 					client_connected(client)
-				else:
-					connected_to_server()
-				pass
 			ENetConnection.EVENT_DISCONNECT:
 				if is_server:
 					client_disconnected(client)
-				else:
-					disconnected_to_server()
-					return
 				pass
 			ENetConnection.EVENT_RECEIVE:
-				if is_server:
-					on_server_get_packet.emit(client.get_meta("id"), client.get_packet())
-				else:
-					on_client_get_packet.emit(client.get_packet())
-				pass
+				on_server_get_packet.emit(client.get_meta("id"), client.get_packet())
 		packet_event = connection.service()
 		event_type = packet_event[0]
 
@@ -80,10 +64,6 @@ func client_connected(client: ENetPacketPeer) -> void:
 	print("client connected")
 	on_client_connect.emit(client_id)
 
-func connected_to_server() -> void:
-	print("connected to server")
-	on_connect_to_server.emit()
-
 
 #FUNCTIONS FOR HANDLING DISCONNECTIONS
 
@@ -94,15 +74,7 @@ func client_disconnected(client: ENetPacketPeer) -> void:
 	print("client", client_id, "disconnected")
 	on_client_disconnect.emit(client_id)
 
-func disconnected_to_server() -> void:
-	print("disconnected to server")
-	on_disconnect_to_server.emit()
-	connection = null
-	
-func disconnect_client() -> void:
-	if is_server: return
-	
-	connected_server.peer_dissconnect()
+
 
 #FUNCTIONS FOR STARTING A SERVER/CLIENT
 
@@ -117,16 +89,6 @@ func start_server(ip_address: String = "127.0.0.1", port: int = 25555) -> void:
 	is_server = true
 	
 	
-func start_client(ip_address: String = "127.0.0.1", port: int = 25555) -> void:
-	connection = ENetConnection.new()
-	var error: Error = connection.create_host(1)
-	if error:
-		print("Failed to start client: ", error_string(error))
-		connection = null
-		return
-	print("client started")
-	is_server = false
-	connected_server = connection.connect_to_host(ip_address, port)
 	
 	
 	

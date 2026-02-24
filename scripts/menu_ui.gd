@@ -9,6 +9,7 @@ func _ready() -> void:
 
 func _on_server_start_pressed() -> void:
 	NetworkHandler.start_server()
+	ClientNetworkHandler.start_client()
 
 func _on_client_start_pressed() -> void:
-	NetworkHandler.start_client()
+	ClientNetworkHandler.start_client()
