@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://clcbynv3x7tk2"]
+
+[ext_resource type="PackedScene" uid="uid://bbsvw5pocwf8v" path="res://scenes/MENU_UI.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://ej6guf11i78e" path="res://scenes/spawner.tscn" id="2_0wfyh"]
+
+[node name="Main" type="Node2D" unique_id=1399377117]
+
+[node name="Control" parent="." unique_id=871439943 instance=ExtResource("1_o5qli")]
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="Node2D" parent="." unique_id=1212540781 instance=ExtResource("2_0wfyh")]

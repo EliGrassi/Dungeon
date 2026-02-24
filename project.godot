@@ -11,8 +11,15 @@ config_version=5
 [application]
 
 config/name="Dungeon Project"
+run/main_scene="uid://clcbynv3x7tk2"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+NetworkHandler="*uid://nm705curvqen"
+ServerGlobals="*uid://b5hw35ihynaey"
+ClientGlobals="*uid://bcys4m00p2noa"
 
 [physics]
 
