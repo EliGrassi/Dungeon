@@ -27,9 +27,11 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 	move_and_slide()
 	PlayerPosition.create(player.owner_id, global_position).send(ClientNetworkHandler.connected_server)
+
 func server_handle_position(client_id: int, player_position: PlayerPosition) -> void:
 	if player.owner_id != client_id: return
-	global_position = player_position.position
+	if !player.is_authority:
+		global_position = player_position.position
 	PlayerPosition.create(player.owner_id, global_position).broadcast(ServerNetworkHandler.connection)
 	
 func client_handle_position(player_position: PlayerPosition) -> void:
