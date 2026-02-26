@@ -7,11 +7,6 @@ extends Node
 var current_action
 var current_direction
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	current_action = TargetAnimationController.EntityAction
-	current_direction = TargetAnimationController.EntityDirection
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -68,4 +63,31 @@ func _process(delta: float) -> void:
 		TargetAnimationController.change_direction(wanted_direction)
 		updated = true
 	if updated:
-		TargetAnimationController.state_changed()
+		state_changed()
+	
+	
+	
+
+#NETWORKING CODE:
+
+func state_changed() -> void:
+	PlayerAnimation.create(ClientGlobals.id, TargetAnimationController.EntityAction, TargetAnimationController.EntityDirection).send(ClientNetworkHandler.connected_server)
+
+
+func client_animation_get(animation_packet: PlayerAnimation) -> void:
+	if animation_packet.id == ClientGlobals.id: return
+	if str(animation_packet.id) != get_parent().get_parent().name: return
+	TargetAnimationController.change_action(animation_packet.animation_action)
+	TargetAnimationController.change_direction(animation_packet.animation_direction)
+
+func server_animation_get(client_id: int, animation_packet: PlayerAnimation) -> void:
+	animation_packet.broadcast(ServerNetworkHandler.connection)
+	pass
+	
+
+func _ready() -> void:
+	current_action = TargetAnimationController.EntityAction
+	current_direction = TargetAnimationController.EntityDirection
+	ClientGlobals.handle_peer_animation_state.connect(client_animation_get)
+	ServerGlobals.handle_player_animation.connect(server_animation_get)
+	pass # Replace with function body.
