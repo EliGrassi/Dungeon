@@ -13,7 +13,7 @@ z_index = 1
 script = ExtResource("1_3li8b")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1776135957]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.2, 0.2)
 script = ExtResource("1_p0vlq")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=34393876]
@@ -25,6 +25,6 @@ shape = SubResource("RectangleShape2D_3li8b")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=912946208]
 scale = Vector2(3.3333333, 3.3333333)
-zoom = Vector2(3, 3)
+zoom = Vector2(5, 5)
 position_smoothing_enabled = true
 script = ExtResource("4_mdl7e")

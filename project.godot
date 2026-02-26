@@ -29,3 +29,4 @@ ClientNetworkHandler="*uid://xfeln70vih4f"
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0.62288105, 0.62288105, 0.62288105, 1)
