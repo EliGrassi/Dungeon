@@ -2,25 +2,23 @@
 
 [ext_resource type="Script" uid="uid://cb2l4j8yhi8w0" path="res://scripts/player.gd" id="1_3li8b"]
 [ext_resource type="Script" uid="uid://g5oovp32rwf6" path="res://scripts/player_movement.gd" id="1_p0vlq"]
-[ext_resource type="Texture2D" uid="uid://bg857k0e4e8c2" path="res://icon.svg" id="2_v6fml"]
+[ext_resource type="PackedScene" uid="uid://c0obq8dgfvvac" path="res://scenes/animation_controller.tscn" id="3_mdl7e"]
 [ext_resource type="Script" uid="uid://dkj88eje04bwk" path="res://scripts/camera_2d.gd" id="4_mdl7e"]
+[ext_resource type="PackedScene" uid="uid://cn5n3okgwivwe" path="res://scenes/local_animation_setter.tscn" id="5_qu4a1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3li8b"]
-size = Vector2(125, 125)
+size = Vector2(12, 14)
 
 [node name="Player" type="Node2D" unique_id=1884427673]
 z_index = 1
 script = ExtResource("1_3li8b")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1776135957]
-scale = Vector2(0.2, 0.2)
 script = ExtResource("1_p0vlq")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=34393876]
-texture = ExtResource("2_v6fml")
+[node name="AnimatedSprite2D" parent="CharacterBody2D" unique_id=641119904 instance=ExtResource("3_mdl7e")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1605859617]
-position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_3li8b")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=912946208]
@@ -28,3 +26,7 @@ scale = Vector2(3.3333333, 3.3333333)
 zoom = Vector2(5, 5)
 position_smoothing_enabled = true
 script = ExtResource("4_mdl7e")
+
+[node name="LocalAnimationSetter" parent="CharacterBody2D" unique_id=2131106934 node_paths=PackedStringArray("TargetAnimationController", "TargetCharacterBody") instance=ExtResource("5_qu4a1")]
+TargetAnimationController = NodePath("../AnimatedSprite2D")
+TargetCharacterBody = NodePath("..")

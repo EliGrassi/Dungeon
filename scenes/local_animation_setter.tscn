@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cn5n3okgwivwe"]
+
+[ext_resource type="Script" uid="uid://cgi7rdmngw0jb" path="res://scripts/local_animation_setter.gd" id="1_cpbhl"]
+
+[node name="LocalAnimationSetter" type="Node" unique_id=2131106934]
+script = ExtResource("1_cpbhl")
