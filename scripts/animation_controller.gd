@@ -69,12 +69,27 @@ func select_animation() -> void:
 
 
 #CODE FOR NETWORKING
+
+
+
 func state_changed() -> void:
+	PlayerAnimation.create(ClientGlobals.id, EntityAction, EntityDirection).send(ClientNetworkHandler.connected_server)
+
+
+func client_animation_get(animation_packet: PlayerAnimation) -> void:
+	if animation_packet.id == ClientGlobals.id: return
+	if str(animation_packet.id) != get_parent().get_parent().name: return
+	change_action(animation_packet.animation_action)
+	change_direction(animation_packet.animation_direction)
+
+func server_animation_get(client_id: int, animation_packet: PlayerAnimation) -> void:
+	animation_packet.broadcast(ServerNetworkHandler.connection)
 	pass
+	
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	ClientGlobals.handle_peer_animation_state.connect(client_animation_get)
+	ServerGlobals.handle_player_animation.connect(server_animation_get)
 	pass # Replace with function body.
 
 

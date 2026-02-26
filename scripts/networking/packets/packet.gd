@@ -2,7 +2,8 @@ class_name PacketBase
 
 enum  PACKET_TYPE{
 	ID_SET = 0,
-	PLAYER_POSITION = 1
+	PLAYER_POSITION = 1,
+	PLAYER_ANIMATION = 2
 }
 
 #The type of packet

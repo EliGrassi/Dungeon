@@ -3,6 +3,7 @@ extends Node
 signal handle_local_id_assignment(id: int)
 signal handle_foreign_id_assignment(id: int)
 signal handle_player_position(player_position: PlayerPosition)
+signal handle_peer_animation_state(player_animation: PlayerAnimation)
 
 var id: int = -1
 var remote_ids: Array[int]
@@ -17,6 +18,8 @@ func on_client_packet(data: PackedByteArray) -> void:
 			handle_ids(IDSet.create_from_data(data))
 		PacketBase.PACKET_TYPE.PLAYER_POSITION:
 			handle_player_position.emit(PlayerPosition.create_from_data(data))
+		PacketBase.PACKET_TYPE.PLAYER_ANIMATION:
+			handle_peer_animation_state.emit(PlayerAnimation.create_from_data(data))
 			pass
 
 
