@@ -9,6 +9,17 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3li8b"]
 size = Vector2(12, 14)
 
+[sub_resource type="Gradient" id="Gradient_08sed"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qu4a1"]
+gradient = SubResource("Gradient_08sed")
+width = 200
+height = 200
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.8)
+
 [node name="Player" type="Node2D" unique_id=1884427673]
 z_index = 1
 script = ExtResource("1_3li8b")
@@ -30,3 +41,9 @@ script = ExtResource("4_mdl7e")
 [node name="LocalAnimationSetter" parent="CharacterBody2D" unique_id=2131106934 node_paths=PackedStringArray("TargetAnimationController", "TargetCharacterBody") instance=ExtResource("5_qu4a1")]
 TargetAnimationController = NodePath("../AnimatedSprite2D")
 TargetCharacterBody = NodePath("..")
+
+[node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D" unique_id=1305373007]
+position = Vector2(-1, -2)
+energy = 0.5
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_qu4a1")

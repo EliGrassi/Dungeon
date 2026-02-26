@@ -14,5 +14,5 @@ func spawn_player(id: int) -> void:
 		new_player.global_position += Vector2(999,999)
 	new_player.owner_id = id
 	new_player.name = str(id)
-	new_player.global_position = Vector2(500, 300)
+	new_player.global_position = Vector2(600, 300)
 	call_deferred("add_child", new_player)
