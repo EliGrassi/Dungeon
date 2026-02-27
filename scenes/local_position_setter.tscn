@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cisly1s5pny7t"]
+
+[ext_resource type="Script" uid="uid://cwt1modbngvpf" path="res://scripts/local_position_setter.gd" id="1_0jj1d"]
+
+[node name="LocalPositionSetter" type="Node" unique_id=87608170]
+script = ExtResource("1_0jj1d")
