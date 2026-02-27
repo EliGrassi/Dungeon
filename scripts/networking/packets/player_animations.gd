@@ -12,7 +12,6 @@ static func create(id: int, animation_action: int, animation_direction: int) -> 
 	info.id = id
 	info.animation_action = animation_action
 	info.animation_direction = animation_direction
-	print(info.animation_direction)
 	return info
 
 
