@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cyctae6pxps5y"]
+
+[ext_resource type="Script" uid="uid://c7htwieje5gh8" path="res://scripts/proximity_text.gd" id="1_86gf2"]
+
+[node name="ProximityText" type="Node2D" unique_id=1801400789 node_paths=PackedStringArray("text_node")]
+script = ExtResource("1_86gf2")
+text_node = NodePath("Label")
+
+[node name="Label" type="Label" parent="." unique_id=633249895]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
