@@ -19,7 +19,8 @@ grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(1.5200014, 1.5200014)
 
-[node name="Node2D" parent="." unique_id=1212540781 instance=ExtResource("2_0wfyh")]
+[node name="Node2D" parent="." unique_id=1212540781 node_paths=PackedStringArray("instance_root") instance=ExtResource("2_0wfyh")]
+default_map = ExtResource("3_sugp2")
+instance_root = NodePath("../Instances")
 
-[node name="SpawnArea" parent="." unique_id=847416564 instance=ExtResource("3_sugp2")]
-position = Vector2(-29, -103)
+[node name="Instances" type="Node" parent="." unique_id=1982334927]
