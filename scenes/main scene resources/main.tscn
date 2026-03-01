@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://clcbynv3x7tk2"]
+
+[ext_resource type="PackedScene" uid="uid://bbsvw5pocwf8v" path="res://scenes/main scene resources/MENU_UI.tscn" id="1_4vel1"]
+[ext_resource type="PackedScene" uid="uid://ej6guf11i78e" path="res://scenes/main scene resources/spawner.tscn" id="2_xn82e"]
+[ext_resource type="PackedScene" uid="uid://cberqe5705613" path="res://scenes/SHARED/maps/Spawn_Area.tscn" id="3_5y1at"]
+
+[node name="Main" type="Node2D" unique_id=1399377117]
+
+[node name="Control" parent="." unique_id=871439943 instance=ExtResource("1_4vel1")]
+z_index = 5
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 592.0
+offset_top = 87.0
+offset_right = 592.0
+offset_bottom = 87.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(1.5200014, 1.5200014)
+
+[node name="Node2D" parent="." unique_id=1212540781 instance=ExtResource("2_xn82e")]
+default_map = ExtResource("3_5y1at")

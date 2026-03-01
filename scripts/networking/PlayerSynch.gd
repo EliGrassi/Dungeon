@@ -1,6 +1,7 @@
 extends Node
+class_name PlayerSynchronizer
 
-
+@export var world_controller: InstanceHandler = null
 @export var PlayerInformation: Dictionary[int, PlayerInfo]
 
 # Called when the node enters the scene tree for the first time.

@@ -1,11 +1,11 @@
 extends Node2D
 class_name Spawner
 
-var server_instances: Dictionary[int, Viewport] = {}
+var server_instances: Dictionary[int, SubViewport] = {}
 
 @export var player: PackedScene
 @export var default_map: PackedScene
-@export var current_map: AreaInstance
+@export var current_map: Node
 
 #Stuff for the server
 

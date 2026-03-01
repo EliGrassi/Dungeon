@@ -3,13 +3,14 @@
 [ext_resource type="TileSet" uid="uid://bcteuhik0cghc" path="res://tilesets/dungeon_1.tres" id="1_08sed"]
 [ext_resource type="Script" uid="uid://b0ugtlffltwt2" path="res://scripts/area_instance.gd" id="1_jvmc8"]
 [ext_resource type="Script" uid="uid://b5y4od832eyv3" path="res://scripts/canvas_modulate.gd" id="2_xpga0"]
-[ext_resource type="PackedScene" uid="uid://cyctae6pxps5y" path="res://scenes/proximity_text.tscn" id="3_xmewo"]
+[ext_resource type="PackedScene" uid="uid://cyctae6pxps5y" path="res://scenes/CLIENT/proximity_text.tscn" id="3_xmewo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jvmc8"]
 size = Vector2(109, 55)
 
 [node name="SpawnArea" type="Node2D" unique_id=847416564]
 script = ExtResource("1_jvmc8")
+map_id = 0
 
 [node name="Floor" type="TileMapLayer" parent="." unique_id=371123396]
 texture_filter = 1

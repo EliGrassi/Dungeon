@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://7kforom4s3ty"]
+
+[ext_resource type="Script" uid="uid://cb2l4j8yhi8w0" path="res://scripts/player.gd" id="1_aiv12"]
+[ext_resource type="Script" uid="uid://g5oovp32rwf6" path="res://scripts/player_movement.gd" id="2_gyok1"]
+[ext_resource type="PackedScene" uid="uid://c0obq8dgfvvac" path="res://scenes/CLIENT/animation_controller.tscn" id="3_k35qp"]
+[ext_resource type="Script" uid="uid://dkj88eje04bwk" path="res://scripts/camera_2d.gd" id="4_wpmf7"]
+[ext_resource type="PackedScene" uid="uid://cn5n3okgwivwe" path="res://scenes/CLIENT/local_animation_setter.tscn" id="5_55j5b"]
+[ext_resource type="PackedScene" uid="uid://cisly1s5pny7t" path="res://scenes/CLIENT/local_position_setter.tscn" id="6_51xfw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3li8b"]
+size = Vector2(12, 14)
+
+[sub_resource type="Gradient" id="Gradient_08sed"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qu4a1"]
+gradient = SubResource("Gradient_08sed")
+width = 200
+height = 200
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.8)
+
+[node name="Player" type="Node2D" unique_id=1884427673 node_paths=PackedStringArray("Character")]
+z_index = 1
+script = ExtResource("1_aiv12")
+Character = NodePath("CharacterBody2D")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1776135957]
+script = ExtResource("2_gyok1")
+
+[node name="AnimatedSprite2D" parent="CharacterBody2D" unique_id=641119904 instance=ExtResource("3_k35qp")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1605859617]
+shape = SubResource("RectangleShape2D_3li8b")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=912946208]
+scale = Vector2(3.3333333, 3.3333333)
+zoom = Vector2(5, 5)
+position_smoothing_enabled = true
+script = ExtResource("4_wpmf7")
+
+[node name="LocalAnimationSetter" parent="CharacterBody2D" unique_id=2131106934 node_paths=PackedStringArray("TargetAnimationController", "TargetCharacterBody") instance=ExtResource("5_55j5b")]
+TargetAnimationController = NodePath("../AnimatedSprite2D")
+TargetCharacterBody = NodePath("..")
+
+[node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D" unique_id=1305373007]
+position = Vector2(-1, -2)
+energy = 0.5
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_qu4a1")
+
+[node name="LocalPositionSetter" parent="CharacterBody2D" unique_id=87608170 node_paths=PackedStringArray("player", "character") instance=ExtResource("6_51xfw")]
+player = NodePath("../..")
+character = NodePath("..")

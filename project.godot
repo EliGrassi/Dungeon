@@ -21,7 +21,6 @@ ServerNetworkHandler="*uid://nm705curvqen"
 ServerGlobals="*uid://b5hw35ihynaey"
 ClientGlobals="*uid://bcys4m00p2noa"
 ClientNetworkHandler="*uid://xfeln70vih4f"
-ServerPlayerSync="*uid://bfcrcitaqhuv4"
 
 [physics]
 
