@@ -2,7 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://bbsvw5pocwf8v" path="res://scenes/main scene resources/MENU_UI.tscn" id="1_4vel1"]
 [ext_resource type="PackedScene" uid="uid://ej6guf11i78e" path="res://scenes/main scene resources/spawner.tscn" id="2_xn82e"]
-[ext_resource type="PackedScene" uid="uid://cberqe5705613" path="res://scenes/SHARED/maps/Spawn_Area.tscn" id="3_5y1at"]
+[ext_resource type="PackedScene" uid="uid://dlf7gttfnr1ds" path="res://scenes/SERVER/INSTANCEHANDLER/server_instance_handler.tscn" id="3_a8rik"]
+[ext_resource type="PackedScene" uid="uid://o1oy6onufxn1" path="res://scenes/SERVER/SYNCHRONIZERS/PlayerSynchServer.tscn" id="4_meadv"]
+[ext_resource type="PackedScene" uid="uid://bfqyii4g7j2dn" path="res://scenes/CLIENT/SPAWNERS/MapSpawnerClient.tscn" id="5_86a0q"]
+[ext_resource type="PackedScene" uid="uid://di5owpj17tguu" path="res://scenes/CLIENT/SPAWNERS/PlayerSpawnerClient.tscn" id="6_o8yoe"]
 
 [node name="Main" type="Node2D" unique_id=1399377117]
 
@@ -20,4 +23,12 @@ grow_vertical = 1
 scale = Vector2(1.5200014, 1.5200014)
 
 [node name="Node2D" parent="." unique_id=1212540781 instance=ExtResource("2_xn82e")]
-default_map = ExtResource("3_5y1at")
+
+[node name="ServerInstanceHandler" parent="." unique_id=1711048011 instance=ExtResource("3_a8rik")]
+
+[node name="PlayerSynchServer" parent="." unique_id=733593010 node_paths=PackedStringArray("world_controller") instance=ExtResource("4_meadv")]
+world_controller = NodePath("../ServerInstanceHandler")
+
+[node name="MapSpawnerClient" parent="." unique_id=1522763499 instance=ExtResource("5_86a0q")]
+
+[node name="PlayerSpawnerClient" parent="." unique_id=992782149 instance=ExtResource("6_o8yoe")]

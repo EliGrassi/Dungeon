@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://o1oy6onufxn1"]
 
-[ext_resource type="Script" uid="uid://bfcrcitaqhuv4" path="res://scripts/networking/PlayerSynch.gd" id="1_s4fqa"]
+[ext_resource type="Script" uid="uid://bfcrcitaqhuv4" path="res://scenes/SERVER/SYNCHRONIZERS/PlayerSynch.gd" id="1_s4fqa"]
 
 [node name="PlayerSynchServer" type="Node" unique_id=733593010]
 script = ExtResource("1_s4fqa")

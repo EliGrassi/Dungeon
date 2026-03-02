@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://i3jkr0eafof6"]
 
-[ext_resource type="Script" uid="uid://bje8gksduwm8v" path="res://scripts/server_instance_container.gd" id="1_1ky2n"]
+[ext_resource type="Script" uid="uid://bje8gksduwm8v" path="res://scenes/SERVER/INSTANCEHANDLER/server_instance_container.gd" id="1_1ky2n"]
 
 [node name="ServerInstanceContainer" type="SubViewport" unique_id=2091273544 node_paths=PackedStringArray("entities_container", "players_container")]
 script = ExtResource("1_1ky2n")

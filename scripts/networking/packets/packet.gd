@@ -3,7 +3,8 @@ class_name PacketBase
 enum  PACKET_TYPE{
 	ID_SET = 0,
 	PLAYER_POSITION = 1,
-	PLAYER_ANIMATION = 2
+	PLAYER_ANIMATION = 2,
+	SCENE_CHANGE = 3
 }
 
 #The type of packet

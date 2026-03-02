@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bfqyii4g7j2dn"]
+
+[ext_resource type="Script" uid="uid://cty55hj8pht5y" path="res://scenes/CLIENT/SPAWNERS/map_spawner_client.gd" id="1_eg0ed"]
+
+[node name="MapSpawnerClient" type="Node" unique_id=1522763499]
+script = ExtResource("1_eg0ed")

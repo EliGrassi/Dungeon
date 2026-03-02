@@ -3,6 +3,7 @@ extends Node
 
 signal handle_player_position(client_id: int, player_position: PlayerPosition)
 signal handle_player_animation(client_id: int, player_animation: PlayerAnimation)
+signal handle_player_change_scene(client_id: int, scene_change: SceneChange)
 
 
 var client_ids: Array[int]
@@ -30,4 +31,6 @@ func handle_incoming_packet(client_id: int, packet: PackedByteArray) -> void:
 			pass
 		PacketBase.PACKET_TYPE.PLAYER_ANIMATION:
 			handle_player_animation.emit(client_id, PlayerAnimation.create_from_data(packet))
+		PacketBase.PACKET_TYPE.SCENE_CHANGE:
+			handle_player_change_scene.emit((packet))
 	pass
