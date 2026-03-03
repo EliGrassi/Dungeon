@@ -8,7 +8,7 @@ class_name ServerInstanceContainer
 @export var wanted_map: PackedScene = null
 @export var current_map: Map = null
 @export var id: int = -1
-var map_uid: String = MapGlobalsLookup.id_to_map[id]
+var map_uid: String
 @export var initialized: bool = false
 @export var entities_container: Node = null
 @export var players_container: Node = null
@@ -16,6 +16,8 @@ var current_player_ids: Array[int] = []
 
 
 func _ready() -> void:
+	map_uid = MapGlobalsLookup.id_to_map[id]
+	world_2d = World2D.new()
 	ResourceLoader.load_threaded_request(map_uid)
 
 

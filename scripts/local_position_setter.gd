@@ -1,6 +1,6 @@
 extends Node
 
-@export var player: Node
+@export var player: PlayerWrapper
 @export var character: CharacterBody2D
 var count: int = 0
 
@@ -14,7 +14,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func client_handle_position(player_position: PlayerPosition) -> void:
-	if player.is_authority || player_position.id != player.owner_id: return
+	if (player.is_authority and not player.on_server) || player_position.id != player.owner_id: return
 	if position_recieved == false:
 		character.global_position = player_position.position
 		position_recieved = true
