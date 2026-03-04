@@ -18,12 +18,13 @@ func register_new_player(player_id:int) -> void:
 
 
 func position_recieved(sender_id: int, position_info: PlayerPosition) -> void:
+	PlayerInformation[sender_id].position_updated = true
 	PlayerInformation[sender_id].position = position_info.position
 
 
 
 func scene_change_recieved(sender_id: int, scene_change: SceneChange) -> void:
-	print("SERVER: Scene change request recieved")
+
 	#info, to, from
 	var info = PlayerInformation[sender_id]
 	world_controller.player_request_move.emit(info, scene_change.scene, info.scene_id)
@@ -34,8 +35,10 @@ func scene_change_confirmed(player_id: int, to: int, from: int) -> void:
 	PlayerInformation[player_id].scene_id = to
 	for player_key in PlayerInformation:
 		var player = PlayerInformation[player_key]
-		if player.scene_id == to:
+		if player.scene_id == to and player.id != player_id:
+			#If this player is in the new scene we traveled to, tell them about the joiner
 			SceneChange.create(player_id, to, 1).send(ServerNetworkHandler.connected_clients[player.id])
+			SceneChange.create(player.id, to, 1).send(ServerNetworkHandler.connected_clients[player_id])
 		else:
 			SceneChange.create(player_id, to, -1).send(ServerNetworkHandler.connected_clients[player.id])
 
@@ -47,5 +50,6 @@ func _physics_process(delta: float) -> void:
 	count += 1
 	if count % 3 == 0:
 		for player_id in PlayerInformation:
-			var info_to_send = PlayerPosition.create(player_id, PlayerInformation[player_id].position)
-			info_to_send.broadcast(ServerNetworkHandler.connection)
+			if PlayerInformation[player_id].position_updated:
+				var info_to_send = PlayerPosition.create(player_id, PlayerInformation[player_id].position)
+				info_to_send.broadcast(ServerNetworkHandler.connection)

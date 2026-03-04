@@ -32,6 +32,5 @@ func handle_incoming_packet(client_id: int, packet: PackedByteArray) -> void:
 		PacketBase.PACKET_TYPE.PLAYER_ANIMATION:
 			handle_player_animation.emit(client_id, PlayerAnimation.create_from_data(packet))
 		PacketBase.PACKET_TYPE.SCENE_CHANGE:
-			print("Routing scene change packet. . .")
 			handle_player_change_scene.emit(client_id, SceneChange.create_from_data(packet))
 	pass

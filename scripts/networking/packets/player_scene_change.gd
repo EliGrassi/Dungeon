@@ -23,11 +23,11 @@ static func create_from_data(data: PackedByteArray) -> SceneChange:
 func encode() -> PackedByteArray:
 	var data: PackedByteArray = super.encode()
 	#one byte for packet type, one byte for sender id, 1 bytes
-	#for the scene id
+	#for the scene id one for if leaving or entering
 	data.resize(4)
 	data.encode_u8(1, id)
-	data.encode_float(2, scene)
-	data.encode_float(3, leaving)
+	data.encode_u8(2, scene)
+	data.encode_u8(3, leaving)
 	return data
 	
 func decode(data: PackedByteArray) -> void:

@@ -22,11 +22,15 @@ func client_handle_position(player_position: PlayerPosition) -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	
 	count += 1
-	if !(player.owner_id == ClientGlobals.id): 
+	#If this is not the local player or this player is the servers copy
+	#simply update its registered position and then return
+	if !(player.owner_id == ClientGlobals.id) || player.on_server: 
 		if position_recieved:
 			character.global_position.y = move_toward(character.global_position.y, target_position.y, character.SPEED * delta)
 			character.global_position.x = move_toward(character.global_position.x, target_position.x, character.SPEED * delta)
 		return
+	#If this is the local player, emit its position to the server
 	if count % 3 == 0:
 		PlayerPosition.create(player.owner_id, character.global_position).send(ClientNetworkHandler.connected_server)
