@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://di5owpj17tguu"]
+
+[ext_resource type="Script" uid="uid://b6qv4n3k5n56l" path="res://scenes/CLIENT/SPAWNERS/player_spawner_client.gd" id="1_6jlsr"]
+[ext_resource type="PackedScene" uid="uid://7kforom4s3ty" path="res://scenes/SHARED/Player.tscn" id="2_46vux"]
+
+[node name="PlayerSpawnerClient" type="Node" unique_id=992782149]
+script = ExtResource("1_6jlsr")
+player = ExtResource("2_46vux")

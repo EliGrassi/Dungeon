@@ -7,3 +7,4 @@ class_name MapGlobals
 func _ready() -> void:
 	#Spawn Map
 	id_to_map[0] = "uid://cberqe5705613"
+	id_to_map[1] = "uid://dkdrm6t5hf5gf"

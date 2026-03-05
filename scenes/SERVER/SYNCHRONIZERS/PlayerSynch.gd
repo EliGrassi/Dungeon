@@ -33,14 +33,15 @@ func scene_change_recieved(sender_id: int, scene_change: SceneChange) -> void:
 
 func scene_change_confirmed(player_id: int, to: int, from: int) -> void:
 	PlayerInformation[player_id].scene_id = to
+	SceneChange.create(player_id, to, 3).send(ServerNetworkHandler.connected_clients[player_id])
 	for player_key in PlayerInformation:
 		var player = PlayerInformation[player_key]
-		if player.scene_id == to and player.id != player_id:
+		if player.scene_id == to:
 			#If this player is in the new scene we traveled to, tell them about the joiner
 			SceneChange.create(player_id, to, 1).send(ServerNetworkHandler.connected_clients[player.id])
 			SceneChange.create(player.id, to, 1).send(ServerNetworkHandler.connected_clients[player_id])
-		else:
-			SceneChange.create(player_id, to, -1).send(ServerNetworkHandler.connected_clients[player.id])
+		elif player.scene_id == from:
+			SceneChange.create(player_id, to, 2).send(ServerNetworkHandler.connected_clients[player.id])
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -3,7 +3,7 @@ class_name InstanceHandler
 
 #Node for the player to put into instances
 @export var player_node: PackedScene = null
-
+@export var instance_container: PackedScene
 
 
 #signal confirming an instance has finished loading
@@ -31,7 +31,7 @@ func _ready() -> void:
 
 func player_moving_to_instance_request(player_info: PlayerInfo, to_id:int, from_id:int) -> void:
 	if !containers.has(to_id):
-		var new_instance = ServerInstanceContainer.new()
+		var new_instance = instance_container.instantiate()
 		new_instance.master = self
 		new_instance.id = to_id
 		containers[to_id] = new_instance
@@ -45,19 +45,15 @@ func player_moving_to_instance_request(player_info: PlayerInfo, to_id:int, from_
 func player_joined_instance(player_info: PlayerInfo, to_id:int, from_id:int) -> void:
 	var player_id = player_info.id
 	if from_id != -1 and containers.has(from_id):
-		var container := containers[from_id]
+		var container = containers[from_id]
 		var player_in_container = container.players_container.get_node(str(player_id))
 		player_in_container.reparent(containers[to_id].players_container)
 	else:
 		var new_player: PlayerWrapper = player_node.instantiate()
+		new_player.name = str(player_id)
 		new_player.on_server = true
 		new_player.owner_id = player_id
-		containers[to_id].call_deferred("add_child", new_player)
+		containers[to_id].players_container.call_deferred("add_child", new_player)
 	player_finished_moving.emit(player_id, to_id, from_id)
 	
 	
-# move player inside its instance
-func update_player_func(player_info: PlayerInfo):
-	var container = containers[player_info.instance_id]
-	var player: PlayerWrapper = container.players_container.get_node(str(player_info.id))
-	#player.Character.global_position = Vector2(player_info.position)

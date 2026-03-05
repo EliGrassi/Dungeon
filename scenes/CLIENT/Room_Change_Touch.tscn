@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://chuwetiyqqum7"]
+
+[ext_resource type="Script" uid="uid://babjhy3axc081" path="res://scenes/CLIENT/room_change_touch.gd" id="1_3dgjs"]
+
+[node name="RoomChangeTouch" type="Node" unique_id=175919367]
+script = ExtResource("1_3dgjs")

@@ -10,8 +10,8 @@ class_name ServerInstanceContainer
 @export var id: int = -1
 var map_uid: String
 @export var initialized: bool = false
-@export var entities_container: Node = null
-@export var players_container: Node = null
+@export var entities_container: Node
+@export var players_container: Node
 var current_player_ids: Array[int] = []
 
 

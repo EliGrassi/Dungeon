@@ -25,12 +25,27 @@ func delete_player(id: int) -> void:
 
 func player_instance_changed(scene_change: SceneChange) -> void:
 
-	var id = scene_change.id
-	if id == ClientGlobals.id: return
 
+	var id = scene_change.id
+	
+	#This signal is sent to confirm we've changed to a new area, leaving=3 means delete all old players
+	#since we will shortly after load new ones
+	if id == ClientGlobals.id and scene_change.leaving == 3: 
+		for player_key in player_list:
+			print(player_key)
+			if player_key != ClientGlobals.id:
+				delete_player(player_key)
+		return
+		
+	#If we are the player being created and this is not the new join signal, dont do anything
+	if id == ClientGlobals.id and scene_change.leaving != 3: return 
+
+	#if a player is joining the scene, spawn them in
 	if scene_change.leaving == 1:
 		spawn_player(id)
-	elif scene_change.leaving == -1:
+		
+	#if a player is leaving our scene, delete them
+	elif scene_change.leaving == 2:
 		delete_player(id)
 		
 		
