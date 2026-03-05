@@ -1,3 +1,6 @@
+#Information held about players by the server
+
+
 extends Node
 class_name PlayerInfo
 
