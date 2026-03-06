@@ -4,12 +4,12 @@ class_name IDSet extends PacketBase
 var id: int
 var remote_ids: Array[int]
 
-static func create(id: int, remote_ids: Array[int]) -> IDSet:
+static func create(player_id: int, server_remote_ids: Array[int]) -> IDSet:
 	var info = IDSet.new()
 	info.packet_type = PACKET_TYPE.ID_SET
 	info.flag = ENetPacketPeer.FLAG_RELIABLE
-	info.id = id
-	info.remote_ids = remote_ids
+	info.id = player_id
+	info.remote_ids = server_remote_ids
 	return info
 
 static func create_from_data(data: PackedByteArray) -> IDSet:
@@ -22,8 +22,8 @@ func encode() -> PackedByteArray:
 	data.resize(2 + remote_ids.size())
 	data.encode_u8(1, id)
 	for i in remote_ids.size():
-		var id: int = remote_ids[i]
-		data.encode_u8(2+i, id)
+		var player_id: int = remote_ids[i]
+		data.encode_u8(2+i, player_id)
 	return data
 	
 func decode(data: PackedByteArray) -> void:

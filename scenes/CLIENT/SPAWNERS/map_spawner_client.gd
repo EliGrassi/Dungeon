@@ -48,7 +48,7 @@ func load_new_map(uid: String) -> void:
 
 #If we dont have a loaded map, wait for one to be finished loading, and then spawn it in
 #update our state to confirm that we have a map loaded.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if loaded == false:
 		if ResourceLoader.load_threaded_get_status(wanted_map_uid) == ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED:
 			wanted_map = ResourceLoader.load_threaded_get(wanted_map_uid)

@@ -5,13 +5,13 @@ var id: int
 var animation_action: int
 var animation_direction: int
 
-static func create(id: int, animation_action: int, animation_direction: int) -> PlayerAnimation:
+static func create(player_id: int, player_animation_action: int, player_animation_direction: int) -> PlayerAnimation:
 	var info: PlayerAnimation = PlayerAnimation.new()
 	info.flag = ENetPacketPeer.FLAG_UNSEQUENCED
 	info.packet_type = PACKET_TYPE.PLAYER_ANIMATION
-	info.id = id
-	info.animation_action = animation_action
-	info.animation_direction = animation_direction
+	info.id = player_id
+	info.animation_action = player_animation_action
+	info.animation_direction = player_animation_direction
 	return info
 
 

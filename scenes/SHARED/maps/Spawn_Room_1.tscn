@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://chuwetiyqqum7" path="res://scenes/CLIENT/Room_Change_Touch.tscn" id="4_oha3m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lx810"]
-size = Vector2(12, 73)
+size = Vector2(12, 67)
 
 [node name="SpawnRoom1" type="Node" unique_id=1412235175]
 script = ExtResource("1_ac5yn")
@@ -26,10 +26,11 @@ script = ExtResource("3_oha3m")
 
 [node name="GoToHub" parent="." unique_id=175919367 node_paths=PackedStringArray("area") instance=ExtResource("4_oha3m")]
 area = NodePath("Area2D")
+destination = Vector2(430, 150)
 
 [node name="Area2D" type="Area2D" parent="GoToHub" unique_id=1226937223]
-position = Vector2(569, 285)
+position = Vector2(570, 268)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoToHub/Area2D" unique_id=845320499]
-position = Vector2(18, -12.5)
+position = Vector2(18, 3.5)
 shape = SubResource("RectangleShape2D_lx810")

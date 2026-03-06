@@ -5,11 +5,11 @@ var id: int
 var leaving: int
 var scene: int
 
-static func create(id: int, scene_id: int, scene_leaving:int) -> SceneChange:
+static func create(player_id: int, scene_id: int, scene_leaving:int) -> SceneChange:
 	var info: SceneChange = SceneChange.new()
 	info.flag = ENetPacketPeer.FLAG_RELIABLE
 	info.packet_type = PACKET_TYPE.SCENE_CHANGE
-	info.id = id
+	info.id = player_id
 	info.scene = scene_id
 	info.leaving = scene_leaving
 	return info

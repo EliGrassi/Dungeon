@@ -26,7 +26,7 @@ var is_server: bool = false
 
 #PROCESS LOOP FOR RECIEVING PACKETS
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if connection == null: return
 	
 	handle_packets()

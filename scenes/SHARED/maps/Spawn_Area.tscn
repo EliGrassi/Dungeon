@@ -53,6 +53,7 @@ area = NodePath("..")
 [node name="RoomChangeTouch" parent="." unique_id=175919367 node_paths=PackedStringArray("area") instance=ExtResource("5_lb6ne")]
 area = NodePath("Area2D")
 target_scene = 1
+destination = Vector2(570, 273)
 
 [node name="Area2D" type="Area2D" parent="RoomChangeTouch" unique_id=1145027358]
 

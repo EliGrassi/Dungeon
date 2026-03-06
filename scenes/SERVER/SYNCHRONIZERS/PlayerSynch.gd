@@ -67,7 +67,7 @@ func scene_change_confirmed(player_id: int, to: int, from: int) -> void:
 var count = 0
 #The physics process emits the position of all players every 3rd run so that clients
 #may know the position of their fellow peers
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if !ServerNetworkHandler.is_server: return
 	count += 1
 	if count % 3 == 0:

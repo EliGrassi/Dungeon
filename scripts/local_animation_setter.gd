@@ -10,7 +10,7 @@ var current_direction
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	if TargetCharacterBody.get_parent().name != str(ClientGlobals.id): return
 	
@@ -80,7 +80,7 @@ func client_animation_get(animation_packet: PlayerAnimation) -> void:
 	TargetAnimationController.change_action(animation_packet.animation_action)
 	TargetAnimationController.change_direction(animation_packet.animation_direction)
 
-func server_animation_get(client_id: int, animation_packet: PlayerAnimation) -> void:
+func server_animation_get(_client_id: int, animation_packet: PlayerAnimation) -> void:
 	animation_packet.broadcast(ServerNetworkHandler.connection)
 	pass
 	

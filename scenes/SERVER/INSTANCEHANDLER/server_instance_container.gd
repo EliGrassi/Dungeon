@@ -30,7 +30,7 @@ func _ready() -> void:
 	ResourceLoader.load_threaded_request(map_uid)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	#If we arent done being created, listen for if our wanted map
 	#is done being loaded in, create it, add it to our container, and emit
 	#our ID as a signal indicating that were done loading.

@@ -4,12 +4,12 @@ class_name PlayerPosition extends PacketBase
 var id: int
 var position: Vector2
 
-static func create(id: int, position: Vector2) -> PlayerPosition:
+static func create(player_id: int, position_of_player: Vector2) -> PlayerPosition:
 	var info: PlayerPosition = PlayerPosition.new()
 	info.flag = ENetPacketPeer.FLAG_UNSEQUENCED
 	info.packet_type = PACKET_TYPE.PLAYER_POSITION
-	info.id = id
-	info.position = position
+	info.id = player_id
+	info.position = position_of_player
 	return info
 
 

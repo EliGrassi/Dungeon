@@ -7,14 +7,19 @@ var count: int = 0
 var target_position: Vector2 = Vector2(0,0)
 var position_recieved: bool = false
 
-func _enter_tree() -> void:
-	ClientGlobals.handle_player_position.connect(client_handle_position)
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	ClientGlobals.handle_player_position.connect(client_handle_position)
 
+
+
+#Function for handling packet telling you this players position
 func client_handle_position(player_position: PlayerPosition) -> void:
+	#If this player is yours (and not the server copy), or if this player isnt the one the packet
+	#Is referring to, return.
 	if (player.is_authority and not player.on_server) || player_position.id != player.owner_id: return
+	
+	#If we've yet to get positional information about this player, set its location
+	#immediatly instead of having it tween to a new location
 	if position_recieved == false:
 		character.global_position = player_position.position
 		position_recieved = true
