@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cisly1s5pny7t" path="res://scenes/CLIENT/local_position_setter.tscn" id="6_51xfw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3li8b"]
-size = Vector2(12, 14)
+size = Vector2(10, 4)
 
 [sub_resource type="Gradient" id="Gradient_08sed"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -23,15 +23,21 @@ fill_to = Vector2(0.8, 0.8)
 
 [node name="Player" type="Node2D" unique_id=1884427673 node_paths=PackedStringArray("Character")]
 z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_aiv12")
 Character = NodePath("CharacterBody2D")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1776135957]
+y_sort_enabled = true
+position = Vector2(0, -7)
+collision_layer = 2
 script = ExtResource("2_gyok1")
 
 [node name="AnimatedSprite2D" parent="CharacterBody2D" unique_id=641119904 instance=ExtResource("3_k35qp")]
+y_sort_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1605859617]
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_3li8b")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=912946208]

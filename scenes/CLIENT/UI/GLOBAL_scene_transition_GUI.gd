@@ -1,0 +1,4 @@
+extends Node
+
+signal scene_change_started_client
+signal scene_change_finished_client

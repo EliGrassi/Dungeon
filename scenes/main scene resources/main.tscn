@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://clcbynv3x7tk2"]
 
-[ext_resource type="PackedScene" uid="uid://bbsvw5pocwf8v" path="res://scenes/main scene resources/MENU_UI.tscn" id="1_4vel1"]
+[ext_resource type="PackedScene" uid="uid://bbsvw5pocwf8v" path="res://scenes/CLIENT/UI/MENU_UI.tscn" id="1_4vel1"]
 [ext_resource type="PackedScene" uid="uid://dlf7gttfnr1ds" path="res://scenes/SERVER/INSTANCEHANDLER/server_instance_handler.tscn" id="3_a8rik"]
 [ext_resource type="PackedScene" uid="uid://o1oy6onufxn1" path="res://scenes/SERVER/SYNCHRONIZERS/PlayerSynchServer.tscn" id="4_meadv"]
 [ext_resource type="PackedScene" uid="uid://bfqyii4g7j2dn" path="res://scenes/CLIENT/SPAWNERS/MapSpawnerClient.tscn" id="5_86a0q"]

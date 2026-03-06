@@ -22,6 +22,7 @@ ServerGlobals="*uid://b5hw35ihynaey"
 ClientGlobals="*uid://bcys4m00p2noa"
 ClientNetworkHandler="*uid://xfeln70vih4f"
 MapGlobalsLookup="*uid://de5fidikxtvhm"
+GlobalSceneTransitionGui="*uid://djidxv11v4d21"
 
 [physics]
 
