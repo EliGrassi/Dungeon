@@ -9,6 +9,9 @@ class_name client_scene_changer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	area.body_entered.connect(change_scene)
+	#The player is on layer 2, so the area
+	#needs to check on layer 2 with its mask
+	area.collision_mask = 2
 	pass # Replace with function body.
 
 

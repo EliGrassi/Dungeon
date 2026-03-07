@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://di5owpj17tguu" path="res://scenes/CLIENT/SPAWNERS/PlayerSpawnerClient.tscn" id="6_o8yoe"]
 
 [node name="Main" type="Node2D" unique_id=1399377117]
+y_sort_enabled = true
 
 [node name="Control" parent="." unique_id=871439943 instance=ExtResource("1_4vel1")]
 z_index = 5
