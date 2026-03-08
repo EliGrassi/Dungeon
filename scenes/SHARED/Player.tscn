@@ -51,7 +51,7 @@ TargetAnimationController = NodePath("../AnimatedSprite2D")
 TargetCharacterBody = NodePath("..")
 
 [node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D" unique_id=1305373007]
-position = Vector2(-1, -2)
+position = Vector2(0, 5)
 energy = 0.5
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_qu4a1")

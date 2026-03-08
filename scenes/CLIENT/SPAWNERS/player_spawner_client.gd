@@ -8,11 +8,8 @@ class_name ClientPlayerSpawner
 @export var player_list: Dictionary[int, PlayerWrapper]
 
 func _ready() -> void:
-	
+	SceneChangeHandler.server_confirmed_signal.connect(player_scene_change)
 	ClientGlobals.handle_local_id_assignment.connect(spawn_player)
-	ClientGlobals.handle_peer_scene_change.connect(player_instance_changed)
-
-
 #Function for spawning a player. can be used for peers or ourselves.
 #is called automatically on our own ID when the server confirms we have connected to it
 
@@ -24,7 +21,7 @@ func spawn_player(id: int) -> void:
 	player_list[id] = new_player
 	new_player.global_position = Vector2(600, 300)
 	call_deferred("add_child", new_player)
-	
+	 
 
 #Function for deleting a player given its id
 
@@ -33,6 +30,25 @@ func delete_player(id: int) -> void:
 	player_list[id].queue_free()
 	player_list.erase(id)
 
+
+#Called when we change scenes. Deletes all spawned players, as new
+#Ones need to be loaded
+func player_scene_change(id: int, target_scene: int, leaving: int) -> void:
+		if id == ClientGlobals.id and leaving == 3:
+			for player_key in player_list:
+				if player_key != ClientGlobals.id:
+					delete_player(player_key)
+		else:
+			peer_moved_scenes(id, leaving)
+
+
+func peer_moved_scenes(peer: int, leaving: int) -> void:
+
+	if leaving == 1 and peer != ClientGlobals.id:
+		spawn_player(peer)
+	if leaving == 2:
+		delete_player(peer)
+	
 
 #Called when the server informs us a player has changed scenes
 
